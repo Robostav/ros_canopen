@@ -323,14 +323,14 @@ public:
 
     virtual void registerDefaultModes(ObjectStorageSharedPtr storage){
         registerMode<ProfiledPositionMode> (MotorBase::Profiled_Position, storage);
-        registerMode<VelocityMode> (MotorBase::Velocity, storage);
-        registerMode<ProfiledVelocityMode> (MotorBase::Profiled_Velocity, storage);
-        registerMode<ProfiledTorqueMode> (MotorBase::Profiled_Torque, storage);
-        registerMode<DefaultHomingMode> (MotorBase::Homing, storage);
-        registerMode<InterpolatedPositionMode> (MotorBase::Interpolated_Position, storage);
-        registerMode<CyclicSynchronousPositionMode> (MotorBase::Cyclic_Synchronous_Position, storage);
-        registerMode<CyclicSynchronousVelocityMode> (MotorBase::Cyclic_Synchronous_Velocity, storage);
-        registerMode<CyclicSynchronousTorqueMode> (MotorBase::Cyclic_Synchronous_Torque, storage);
+//        registerMode<VelocityMode> (MotorBase::Velocity, storage);
+//        registerMode<ProfiledVelocityMode> (MotorBase::Profiled_Velocity, storage);
+//        registerMode<ProfiledTorqueMode> (MotorBase::Profiled_Torque, storage);
+//        registerMode<DefaultHomingMode> (MotorBase::Homing, storage);
+//        registerMode<InterpolatedPositionMode> (MotorBase::Interpolated_Position, storage);
+//        registerMode<CyclicSynchronousPositionMode> (MotorBase::Cyclic_Synchronous_Position, storage);
+//        registerMode<CyclicSynchronousVelocityMode> (MotorBase::Cyclic_Synchronous_Velocity, storage);
+//        registerMode<CyclicSynchronousTorqueMode> (MotorBase::Cyclic_Synchronous_Torque, storage);
     }
 
     class Allocator : public MotorBase::Allocator{

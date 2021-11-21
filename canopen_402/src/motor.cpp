@@ -91,6 +91,7 @@ Command402::TransitionTable::TransitionTable(){
     /*12*/ add(s::Quick_Stop_Active, s::Switch_On_Disabled, disable_voltage);
 
     Op automatic(0,0);
+    /* JAND custom */ add(s::Start, s::Switch_On_Disabled, automatic);
     /* 0*/ add(s::Start, s::Not_Ready_To_Switch_On, automatic);
     /* 1*/ add(s::Not_Ready_To_Switch_On, s::Switch_On_Disabled, automatic);
     /*14*/ add(s::Fault_Reaction_Active, s::Fault, automatic);
@@ -119,7 +120,7 @@ Command402::TransitionTable::TransitionTable(){
 State402::InternalState Command402::nextStateForEnabling(State402::InternalState state){
     switch(state){
     case State402::Start:
-        return State402::Not_Ready_To_Switch_On;
+        return State402::Switch_On_Disabled;
 
     case State402::Fault:
     case State402::Not_Ready_To_Switch_On:
@@ -266,10 +267,14 @@ uint16_t Motor402::getMode() {
 }
 
 bool Motor402::isModeSupportedByDevice(uint16_t mode){
-    if(!supported_drive_modes_.valid()) {
-        BOOST_THROW_EXCEPTION( std::runtime_error("Supported drive modes (object 6502) is not valid"));
+//    if(!supported_drive_modes_.valid()) {
+//        BOOST_THROW_EXCEPTION( std::runtime_error("Supported drive modes (object 6502) is not valid"));
+//    }
+//    return mode > 0 && mode <= 32 && (supported_drive_modes_.get_cached() & (1<<(mode-1)));
+    if(mode == MotorBase::Profiled_Position){
+        return true;
     }
-    return mode > 0 && mode <= 32 && (supported_drive_modes_.get_cached() & (1<<(mode-1)));
+    return false;
 }
 void Motor402::registerMode(uint16_t id, const ModeSharedPtr &m){
     boost::mutex::scoped_lock map_lock(map_mutex_);
