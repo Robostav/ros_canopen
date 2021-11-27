@@ -232,7 +232,7 @@ public:
         cw.set(CW_Immediate);
         if(hasTarget()){
             int32_t target = getTarget();
-            if((sw_ & MASK_Acknowledged) == 0 && target != last_target_){
+            if((sw_ & MASK_Acknowledged) != 0 && target != last_target_){
                 if(cw.get(CW_NewPoint)){
                     cw.reset(CW_NewPoint); // reset if needed
                 }else{
